@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/model/WeatherDataa.dart';
+import 'package:weather_app/utils/helper.dart';
 
 import '../utils/constants.dart';
 
@@ -58,8 +59,7 @@ Future<WeatherDataa> WeatherS(
         print('Weather Data: ${_weather1.toString()}');
         return _weather1;
       } else {
-        throw Exception(
-            'Failed to load weather data: ${response.reasonPhrase}');
+        throw errorHandler(response);
       }
     } catch (e) {
       print('Error retrieving weather data: $e');
